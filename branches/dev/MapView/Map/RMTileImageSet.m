@@ -253,13 +253,14 @@ NSLog(@"In %s, removing tile at {%u, %u}, %hi.", __FUNCTION__, tile.x, tile.y, t
 //	NSLog(@"Removed %d from stack",removalCount);
 }
 
--(void) removeAllTiles
+- (void)removeAllTiles
 {
 	NSArray * imagelist = [images allObjects];
 	for (RMTileImage * img in imagelist) {
 		NSUInteger count = [images countForObject:img];
-		for (NSUInteger i = 0; i < count; i++)
-			[self removeTile: img.tile];
+		for (NSUInteger i = 0; i < count; i++) {
+			[self removeTile: img.tile forImage:img];
+		}
 	}
 }
 
